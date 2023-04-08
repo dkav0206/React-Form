@@ -4,10 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('main'));
+
+// APP là một thẻ của react do chúng ta tự định nghĩa ra 
+// APP là một component 
+// Thẻ do chúng ta tự định nghĩa sẽ bắt đầu bằng ký tự in hoa 
 root.render(
   <React.StrictMode>
+    {/* strict mode sẽ giúp chúng ta phát hiện ra lỗi ảnh hưởng đến hiệu suất của trang web */}
     <App />
+    {/* Root của ứng dụng */}
   </React.StrictMode>
 );
 

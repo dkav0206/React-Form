@@ -68,3 +68,23 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# README.md : file mô tả dự án khi đưa lên github
+
+# Package.json: liệt kê những thư viện đã được cài đặt trong dự án (sổ nhật ký) và những version nào được cài đặt của thư viện đó 
+
+# package-lock.json: liệt kê chính xác version của thư viện được cài đặt 
+
+# gitignore: liệt kê những folder hay file mình không muốn commit lên git 
+
+# node_modules: nơi lưu trữ những source code của các thư viện mình mong muốn cài đặt 
+
+# npm install: để cài đặt lại thư viện được liệt kê trong file package.json | package.json 
+
+# public:  chừa file html và ảnh
+
+# src: nơi chúng ta sẽ code chính 
+
+chúng ta sẽ code chính trong file App.js
+index.js: chúng ta chỉ liên kết tới file html và render ra giao diện
