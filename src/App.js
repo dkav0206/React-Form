@@ -5,9 +5,7 @@ import Home from './modules/BaiTapLayout/Home';
 function App() {
   return (
     <div className="App">
-    
       <Home/>
-
     </div>
   );
 }
