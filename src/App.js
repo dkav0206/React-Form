@@ -1,11 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import Home from './modules/BaiTapLayout/Home';
+import ProductList from './modules/ShoeShop/ProductList';
+import ShoesStore from './modules/ShoeShop/ShoesStore';
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <ShoesStore/>
     </div>
   );
 }
