@@ -1,11 +1,10 @@
 import './App.css';
-import ProductList from './modules/ShoeShop/ProductList';
-import ShoesStore from './modules/ShoeShop/ShoesStore';
+import Cinema from './modules/Cinema';
 
 function App() {
   return (
     <div className="App">
-      <ShoesStore/>
+      <Cinema/>
     </div>
   );
 }

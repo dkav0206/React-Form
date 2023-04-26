@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import { store } from './redux/configStore';
 
 const root = ReactDOM.createRoot(document.getElementById('main'));
 
@@ -12,7 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('main'));
 root.render(
   <React.StrictMode>
     {/* strict mode sẽ giúp chúng ta phát hiện ra lỗi ảnh hưởng đến hiệu suất của trang web */}
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
     {/* Root của ứng dụng */}
   </React.StrictMode>
 );
