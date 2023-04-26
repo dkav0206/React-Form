@@ -71,6 +71,7 @@
     color: #000;
 
     cursor: no-drop !important;
+    pointer-events: none;
     border-radius: 5px;
     
     font-size: 12px;
