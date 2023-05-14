@@ -1,212 +1,107 @@
 import {combineReducers, createStore} from 'redux';
 
-const gheList = [{
-    gheDangChon: [
-       
-    ]},    
-    {
-  rapChieu: [{
-    "hang": "A", 
-    "danhSachGhe": [
-      {"soGhe":"A1","gia":75000,"daDat":false},
-      {"soGhe":"A2","gia":75000,"daDat":false},
-      {"soGhe":"A3","gia":75000,"daDat":false},
-      {"soGhe":"A4","gia":75000,"daDat":false},
-      {"soGhe":"A5","gia":75000,"daDat":false},
-      {"soGhe":"A6","gia":75000,"daDat":false},
-      {"soGhe":"A7","gia":75000,"daDat":false},
-      {"soGhe":"A8","gia":75000,"daDat":false},
-      {"soGhe":"A9","gia":75000,"daDat":false},
-      {"soGhe":"A10","gia":75000,"daDat":false},
-      {"soGhe":"A11","gia":0,"daDat":true},
-      {"soGhe":"A12","gia":0,"daDat":true}
-    ] 
-  },
-  {
-    "hang": "B", 
-    "danhSachGhe": [
-      {"soGhe":"B1","gia":75000,"daDat":false},
-      {"soGhe":"B2","gia":75000,"daDat":false},
-      {"soGhe":"B3","gia":75000,"daDat":false},
-      {"soGhe":"B4","gia":75000,"daDat":false},
-      {"soGhe":"B5","gia":75000,"daDat":false},
-      {"soGhe":"B6","gia":75000,"daDat":false},
-      {"soGhe":"B7","gia":75000,"daDat":false},
-      {"soGhe":"B8","gia":75000,"daDat":false},
-      {"soGhe":"B9","gia":75000,"daDat":false},
-      {"soGhe":"B10","gia":75000,"daDat":false},
-      {"soGhe":"B11","gia":75000,"daDat":false},
-      {"soGhe":"B12","gia":75000,"daDat":false}
-    ] 
-  },
-  {
-    "hang": "C", 
-    "danhSachGhe": [
-      {"soGhe":"C1","gia":75000,"daDat":false},
-      {"soGhe":"C2","gia":75000,"daDat":false},
-      {"soGhe":"C3","gia":75000,"daDat":false},
-      {"soGhe":"C4","gia":75000,"daDat":false},
-      {"soGhe":"C5","gia":75000,"daDat":false},
-      {"soGhe":"C6","gia":75000,"daDat":false},
-      {"soGhe":"C7","gia":75000,"daDat":false},
-      {"soGhe":"C8","gia":75000,"daDat":false},
-      {"soGhe":"C9","gia":75000,"daDat":false},
-      {"soGhe":"C10","gia":75000,"daDat":false},
-      {"soGhe":"C11","gia":75000,"daDat":false},
-      {"soGhe":"C12","gia":75000,"daDat":false}
-    ] 
-  }, {
-    "hang": "D", 
-    "danhSachGhe": [
-      {"soGhe":"D1","gia":75000,"daDat":false},
-      {"soGhe":"D2","gia":75000,"daDat":false},
-      {"soGhe":"D3","gia":75000,"daDat":false},
-      {"soGhe":"D4","gia":75000,"daDat":false},
-      {"soGhe":"D5","gia":75000,"daDat":false},
-      {"soGhe":"D6","gia":75000,"daDat":false},
-      {"soGhe":"D7","gia":75000,"daDat":false},
-      {"soGhe":"D8","gia":75000,"daDat":false},
-      {"soGhe":"D9","gia":75000,"daDat":false},
-      {"soGhe":"D10","gia":75000,"daDat":false},
-      {"soGhe":"D11","gia":75000,"daDat":false},
-      {"soGhe":"D12","gia":75000,"daDat":false}
-    ] 
-  },{
-    "hang": "E", 
-    "danhSachGhe": [
-      {"soGhe":"E1","gia":75000,"daDat":false},
-      {"soGhe":"E2","gia":75000,"daDat":false},
-      {"soGhe":"E3","gia":75000,"daDat":false},
-      {"soGhe":"E4","gia":75000,"daDat":false},
-      {"soGhe":"E5","gia":75000,"daDat":false},
-      {"soGhe":"E6","gia":75000,"daDat":false},
-      {"soGhe":"E7","gia":75000,"daDat":false},
-      {"soGhe":"E8","gia":75000,"daDat":false},
-      {"soGhe":"E9","gia":75000,"daDat":false},
-      {"soGhe":"E10","gia":75000,"daDat":false},
-      {"soGhe":"E11","gia":75000,"daDat":false},
-      {"soGhe":"E12","gia":75000,"daDat":false}
-    ] 
-  },{
-    "hang": "F", 
-    "danhSachGhe": [
-      {"soGhe":"F1","gia":75000,"daDat":false},
-      {"soGhe":"F2","gia":75000,"daDat":false},
-      {"soGhe":"F3","gia":75000,"daDat":false},
-      {"soGhe":"F4","gia":75000,"daDat":false},
-      {"soGhe":"F5","gia":75000,"daDat":false},
-      {"soGhe":"F6","gia":75000,"daDat":false},
-      {"soGhe":"F7","gia":75000,"daDat":false},
-      {"soGhe":"F8","gia":75000,"daDat":false},
-      {"soGhe":"F9","gia":75000,"daDat":false},
-      {"soGhe":"F10","gia":75000,"daDat":false},
-      {"soGhe":"F11","gia":75000,"daDat":false},
-      {"soGhe":"F12","gia":75000,"daDat":false}
-    ] 
-  },{
-    "hang": "G", 
-    "danhSachGhe": [
-      {"soGhe":"G1","gia":75000,"daDat":false},
-      {"soGhe":"G2","gia":75000,"daDat":false},
-      {"soGhe":"G3","gia":75000,"daDat":false},
-      {"soGhe":"G4","gia":75000,"daDat":false},
-      {"soGhe":"G5","gia":75000,"daDat":false},
-      {"soGhe":"G6","gia":75000,"daDat":false},
-      {"soGhe":"G7","gia":75000,"daDat":false},
-      {"soGhe":"G8","gia":75000,"daDat":false},
-      {"soGhe":"G9","gia":75000,"daDat":false},
-      {"soGhe":"G10","gia":75000,"daDat":false},
-      {"soGhe":"G11","gia":75000,"daDat":false},
-      {"soGhe":"G12","gia":75000,"daDat":false}
-    ] 
-  },{
-    "hang": "H", 
-    "danhSachGhe": [
-      {"soGhe":"H1","gia":75000,"daDat":false},
-      {"soGhe":"H2","gia":75000,"daDat":false},
-      {"soGhe":"H3","gia":75000,"daDat":false},
-      {"soGhe":"H4","gia":75000,"daDat":false},
-      {"soGhe":"H5","gia":75000,"daDat":false},
-      {"soGhe":"H6","gia":75000,"daDat":false},
-      {"soGhe":"H7","gia":75000,"daDat":false},
-      {"soGhe":"H8","gia":75000,"daDat":false},
-      {"soGhe":"H9","gia":75000,"daDat":false},
-      {"soGhe":"H10","gia":75000,"daDat":false},
-      {"soGhe":"H11","gia":75000,"daDat":false},
-      {"soGhe":"H12","gia":75000,"daDat":false}
-    ] 
-  },{
-    "hang": "I", 
-    "danhSachGhe": [
-      {"soGhe":"I1","gia":75000,"daDat":false},
-      {"soGhe":"I2","gia":75000,"daDat":false},
-      {"soGhe":"I3","gia":75000,"daDat":false},
-      {"soGhe":"I4","gia":75000,"daDat":false},
-      {"soGhe":"I5","gia":75000,"daDat":false},
-      {"soGhe":"I6","gia":75000,"daDat":false},
-      {"soGhe":"I7","gia":75000,"daDat":false},
-      {"soGhe":"I8","gia":75000,"daDat":false},
-      {"soGhe":"I9","gia":75000,"daDat":false},
-      {"soGhe":"I10","gia":75000,"daDat":false},
-      {"soGhe":"I11","gia":75000,"daDat":false},
-      {"soGhe":"I12","gia":75000,"daDat":false}
-    ] 
-  },{
-    "hang": "J", 
-    "danhSachGhe": [
-      {"soGhe":"J1","gia":75000,"daDat":false},
-      {"soGhe":"J2","gia":75000,"daDat":false},
-      {"soGhe":"J3","gia":75000,"daDat":false},
-      {"soGhe":"J4","gia":75000,"daDat":false},
-      {"soGhe":"J5","gia":75000,"daDat":false},
-      {"soGhe":"J6","gia":75000,"daDat":false},
-      {"soGhe":"J7","gia":75000,"daDat":false},
-      {"soGhe":"J8","gia":75000,"daDat":false},
-      {"soGhe":"J9","gia":75000,"daDat":false},
-      {"soGhe":"J10","gia":75000,"daDat":false},
-      {"soGhe":"J11","gia":75000,"daDat":false},
-      {"soGhe":"J12","gia":75000,"daDat":false}
-    ] 
-  }
-]
+const stateDefault = {
+    mangSV: [
+      {
+        maSV: "1", 
+        sdt: "0321032103", 
+        hoTen:"concak", 
+        email:"nguyenvan@gmail.com",
+      }
+    ], 
+    value:{
+        maSV: "",
+        hoTen: "",
+        sdt:"",
+        email:""
+    },
+    error: { 
+        maSV: "",
+        hoTen: "",
+        sdt:"",
+        email:""
+    },
+    svSua: { 
 
-}]
+    }
+  }
+
+
 
 const rootReducer = combineReducers({
-    cinemaReducer: (state = gheList, action) =>{
+    svReducer: (state = stateDefault, action) =>{
         switch (action.type){
-            case "DANG_CHON": { 
-                const ve = action.payload;
-                state[0].gheDangChon.push(ve)
+            case "ON_CHANGE": {
+              const {id, name, value} = action.payload;
+              
+              const newValue = {...state.value};
+              newValue[id] = value;
+              const newError = {...state.error};
+              let mssError = ''
 
-                return [...state]
+              if (value === ""){ 
+                  mssError = name + ' Không được bỏ trống'
+              }
+
+              if(id === 'email'){
+                  const regrexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
+                  if (regrexEmail.test(value) === false) { 
+                      mssError = "Email không hợp lệ"
+                  }
+              } else if (id === 'sdt'){
+                  const regrexSdt = /^\d+$/;
+                  if (regrexSdt.test(value) === false) { 
+                      mssError = "Số điện thoại không hợp lệ"
+                  }
+              }
+              newError[id] = mssError
+
+              state.error = newError
+              console.log(newError)
+              state.value = newValue
+              console.log(newValue)
+              return {...state}
             }
-            case "XOA_HET":{
-                console.log("dsada")
-                state[0].gheDangChon = []
-                return [...state]
+            case "THEM_NGUOI_DUNG":{
+
+              for (let keyValue in state.value){
+                  if (state.value[keyValue] === ''){
+                      alert("Bạn chưa nhập dữ liệu")
+                      return state; 
+                  }
+              }
+              const idTonTai= state.mangSV.find((item) => item.maSV === state.value.maSV);
+              const emailTontai = state.mangSV.find((item) => item.email === state.value.email);
+
+              if (idTonTai){
+                  alert("Mã Sinh Viên đã tồn tại");
+                  return state; 
+              } else if (emailTontai){
+                  alert("Email đã tồn tại");
+                  return state; 
+              }
+
+              //kiểm tra có error nào hay không
+              for (let keyError in state.error){
+                  if(state.error[keyError] !== ''){
+                      alert(state.error[keyError])
+                      return state;
+                  }
+              }
+
+
+              state.mangSV = [...state.mangSV, state.value];
+            return {...state}; 
             }
-            case "XOA": { 
-                const maGheCanTim = state[0].gheDangChon.findIndex((sp) => sp.soGhe === action.payload);
-                state[0].gheDangChon.splice(maGheCanTim,1)
-                console.log(maGheCanTim)
-                return [...state]
+            case "XOA_NGUOI_DUNG":{
+              const mangSVmoi = state.mangSV.filter((sv) => sv.maSV !== action.payload);
+              state.mangSV = mangSVmoi;
+              
+              return {...state}
             }
-            case "PAY":{
-                state[0].gheDangChon.map((ghe, index) => { 
-                    state[1].rapChieu.map((danhSach) => { 
-                        danhSach.danhSachGhe.map((gheChon) => { 
-                            if (ghe.soGhe === gheChon.soGhe){
-                                gheChon.daDat=true
-                            }
-                        })
-                    })
-                })
-
-                state[0].gheDangChon = []
-
-
-                return [...state]
+            case "SUA_NGUOI_DUNG":{
+              state.svSua = action.payload;
+              return {...state}
             }
             default:
                 return state
