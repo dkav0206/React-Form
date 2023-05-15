@@ -19,9 +19,10 @@ class FormData extends Component {
 
 
     static getDerivedStateFromProps(newProps, currentState){ 
-        if(currentState.value.maSV !== newProps.svSua.maSV){
+        let propsCre = (newProps.svSua ? newProps.svSua: this.state.value)
+        if(currentState.value.maSV !== propsCre.maSV && (propsCre.maSV !== '')){
             return {
-                value: newProps.svSua,
+                value: newProps.svSua
             }
         }
         return null;
@@ -29,11 +30,14 @@ class FormData extends Component {
 
 
     handleOnchange =(event) => { 
-        const {id, name, className, value} = event.target;
+        const {id, name, value} = event.target;
 
         const newValue = {...this.state.value};
         newValue[id] = value;
+
+
         const newError = {...this.state.error};
+
         let mssError = ''
         if (value === ""){ 
             mssError = name + ' Không được bỏ trống'
@@ -52,6 +56,7 @@ class FormData extends Component {
 
         newError[id] = mssError
 
+        
         this.setState(
             {
                 value: newValue,
@@ -79,9 +84,17 @@ class FormData extends Component {
             }
         }
 
+        let newNewValue = 
+        {
+            maSV: document.getElementById("maSV").value,
+            hoTen: document.getElementById("hoTen").value,
+            sdt: document.getElementById("sdt").value,
+            email: document.getElementById("email").value,
+        }
+
         const action = { 
             type: 'THEM_NGUOI_DUNG',
-            payload: this.state.value
+            payload: newNewValue
         }
 
         this.props.dispatch(action)
