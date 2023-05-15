@@ -8,22 +8,12 @@ const stateDefault = {
         hoTen:"concak", 
         email:"nguyenvan@gmail.com",
       }
-    ], 
-    value:{
-        maSV: "",
-        hoTen: "",
-        sdt:"",
-        email:""
-    },
-    error: { 
-        maSV: "",
-        hoTen: "",
-        sdt:"",
-        email:""
-    },
+    ],
     svSua: { 
 
-    }
+    },
+    search: [],
+    
   }
 
 
@@ -31,66 +21,47 @@ const stateDefault = {
 const rootReducer = combineReducers({
     svReducer: (state = stateDefault, action) =>{
         switch (action.type){
-            case "ON_CHANGE": {
-              const {id, name, value} = action.payload;
+            // case "ON_CHANGE": {
+            //   const {id, name, value} = action.payload;
               
-              const newValue = {...state.value};
-              newValue[id] = value;
-              const newError = {...state.error};
-              let mssError = ''
+            //   const newValue = {...state.value};
+            //   newValue[id] = value;
+            //   const newError = {...state.error};
+            //   let mssError = ''
 
-              if (value === ""){ 
-                  mssError = name + ' Không được bỏ trống'
-              }
+            //   if (value === ""){ 
+            //       mssError = name + ' Không được bỏ trống'
+            //   }
 
-              if(id === 'email'){
-                  const regrexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
-                  if (regrexEmail.test(value) === false) { 
-                      mssError = "Email không hợp lệ"
-                  }
-              } else if (id === 'sdt'){
-                  const regrexSdt = /^\d+$/;
-                  if (regrexSdt.test(value) === false) { 
-                      mssError = "Số điện thoại không hợp lệ"
-                  }
-              }
-              newError[id] = mssError
+            //   if(id === 'email'){
+            //       const regrexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i;
+            //       if (regrexEmail.test(value) === false) { 
+            //           mssError = "Email không hợp lệ"
+            //       }
+            //   } else if (id === 'sdt'){
+            //       const regrexSdt = /^\d+$/;
+            //       if (regrexSdt.test(value) === false) { 
+            //           mssError = "Số điện thoại không hợp lệ"
+            //       }
+            //   }
+            //   newError[id] = mssError
 
-              state.error = newError
-              console.log(newError)
-              state.value = newValue
-              console.log(newValue)
-              return {...state}
-            }
+            //   state.error = newError
+            //   state.value = newValue
+            //   return {...state}
+            // }
             case "THEM_NGUOI_DUNG":{
-
-              for (let keyValue in state.value){
-                  if (state.value[keyValue] === ''){
-                      alert("Bạn chưa nhập dữ liệu")
-                      return state; 
-                  }
-              }
-              const idTonTai= state.mangSV.find((item) => item.maSV === state.value.maSV);
-              const emailTontai = state.mangSV.find((item) => item.email === state.value.email);
-
+              const idTonTai= state.mangSV.find((item) => item.maSV === action.payload.maSV);
+              const emailTontai = state.mangSV.find((item) => item.email === action.payload.email);
               if (idTonTai){
                   alert("Mã Sinh Viên đã tồn tại");
-                  return state; 
-              } else if (emailTontai){
+              } else if (emailTontai){ 
                   alert("Email đã tồn tại");
-                  return state; 
-              }
-
-              //kiểm tra có error nào hay không
-              for (let keyError in state.error){
-                  if(state.error[keyError] !== ''){
-                      alert(state.error[keyError])
-                      return state;
-                  }
+              } else { 
+                state.mangSV = [...state.mangSV, action.payload];
               }
 
 
-              state.mangSV = [...state.mangSV, state.value];
             return {...state}; 
             }
             case "XOA_NGUOI_DUNG":{
@@ -101,6 +72,26 @@ const rootReducer = combineReducers({
             }
             case "SUA_NGUOI_DUNG":{
               state.svSua = action.payload;
+              return {...state}
+            }
+            case "CAP_NHAP_NGUOI_DUNG": { 
+              let svCanUpdate = state.mangSV.findIndex((sv) => sv.maSV === action.payload.maSV);
+              const newSv = [...state.mangSV]
+              if (svCanUpdate !== -1){
+                newSv[svCanUpdate] = action.payload
+              }
+
+              state.mangSV = newSv;
+
+              return {...state}
+            }
+            case "RESET": { 
+              state.svSua = {};
+              return {...state}
+            }
+            case "KIEM_NGUOI_DUNG": {
+              state.search = state.mangSV.filter((sv) => sv.hoTen.toLowerCase().includes(action.payload.toLowerCase()));
+              state.search.isSearch = true;
               return {...state}
             }
             default:
